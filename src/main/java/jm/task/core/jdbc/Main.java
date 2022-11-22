@@ -7,8 +7,10 @@ import java.util.List;
 
 public class Main {
     public static void main(String[] args) {
+
         UserService us = new UserServiceImpl();
         us.createUsersTable();
+
         User u1 = new User("Вася1", "Пупкин1", (byte) 2);
         User u2 = new User("Вася2", "Пупкин2", (byte) 24);
         User u3 = new User("Вася3", "Пупкин3", (byte) 50);
@@ -18,9 +20,11 @@ public class Main {
             us.saveUser(u.getName(), u.getLastName(), u.getAge());
             System.out.println("User с именем – " + u.getName() + " добавлен в базу данных");
         }
+
         List<User> allUsers = us.getAllUsers();
         allUsers.forEach(System.out::println);
-        us.cleanUsersTable();
-        us.dropUsersTable();
+
+        //us.cleanUsersTable();
+        //us.dropUsersTable();
     }
 }

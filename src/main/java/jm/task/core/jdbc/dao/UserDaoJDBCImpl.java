@@ -10,7 +10,7 @@ import java.util.List;
 public class UserDaoJDBCImpl implements UserDao {
 
     public void createUsersTable() {
-        String sql = "CREATE TABLE IF NOT EXISTS users " +
+        String sql = "CREATE TABLE IF NOT EXISTS user " +
                 "(id INTEGER NOT NULL AUTO_INCREMENT, " +
                 " name VARCHAR(32), " +
                 " lastname VARCHAR(32), " +
@@ -31,7 +31,7 @@ public class UserDaoJDBCImpl implements UserDao {
     }
 
     public void dropUsersTable() {
-        String sql = "DROP TABLE IF EXISTS users";
+        String sql = "DROP TABLE IF EXISTS user";
         try (Connection connection = Util.getMySQLConnection();
              Statement statement = connection.createStatement()) {
             try {
@@ -46,7 +46,7 @@ public class UserDaoJDBCImpl implements UserDao {
     }
 
     public void saveUser(String name, String lastName, byte age) {
-        String sql = "INSERT INTO users (name, lastname, age) VALUES (?, ?, ?)";
+        String sql = "INSERT INTO user (name, lastname, age) VALUES (?, ?, ?)";
         try (Connection connection = Util.getMySQLConnection();
              PreparedStatement preparedStatement = connection.prepareStatement(sql)) {
             preparedStatement.setString(1, name);
@@ -64,7 +64,7 @@ public class UserDaoJDBCImpl implements UserDao {
     }
 
     public void removeUserById(long id) {
-        String sql = "DELETE FROM USERS WHERE id = ?";
+        String sql = "DELETE FROM user WHERE id = ?";
         try (Connection connection = Util.getMySQLConnection();
              PreparedStatement preparedStatement = connection.prepareStatement(sql)) {
             preparedStatement.setLong(1, id);
@@ -80,7 +80,7 @@ public class UserDaoJDBCImpl implements UserDao {
     }
 
     public List<User> getAllUsers() {
-        String sql = "SELECT * FROM users";
+        String sql = "SELECT * FROM user";
         List<User> userList = null;
         try (Connection connection = Util.getMySQLConnection();
              Statement statement = connection.createStatement()) {
@@ -106,7 +106,7 @@ public class UserDaoJDBCImpl implements UserDao {
     }
 
     public void cleanUsersTable() {
-        String sql = "DELETE FROM users";
+        String sql = "DELETE FROM user";
         try (Connection connection = Util.getMySQLConnection();
              Statement statement = connection.createStatement()) {
             try {
