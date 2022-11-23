@@ -9,6 +9,7 @@ public class Main {
     public static void main(String[] args) {
 
         UserService us = new UserServiceImpl();
+        /*
         us.createUsersTable();
 
         User u1 = new User("Вася1", "Пупкин1", (byte) 2);
@@ -24,7 +25,9 @@ public class Main {
         List<User> allUsers = us.getAllUsers();
         allUsers.forEach(System.out::println);
 
-        //us.cleanUsersTable();
-        //us.dropUsersTable();
+        us.cleanUsersTable();
+
+         */
+        us.dropUsersTable();
     }
 }
